@@ -15,6 +15,7 @@
 package com.letv.commonjar.container;
 
 class ContainerHelpers {
+    static final boolean[] EMPTY_BOOLEANS = new boolean[0];
     static final int[] EMPTY_INTS = new int[0];
     static final long[] EMPTY_LONGS = new long[0];
     static final Object[] EMPTY_OBJECTS = new Object[0];
