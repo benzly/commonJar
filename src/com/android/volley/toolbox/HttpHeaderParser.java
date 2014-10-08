@@ -1,17 +1,15 @@
 /*
  * Copyright (C) 2011 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
 
 package com.android.volley.toolbox;
@@ -66,8 +64,7 @@ public class HttpHeaderParser {
                 } else if (token.startsWith("max-age=")) {
                     try {
                         maxAge = Long.parseLong(token.substring(8));
-                    } catch (Exception e) {
-                    }
+                    } catch (Exception e) {}
                 } else if (token.equals("must-revalidate") || token.equals("proxy-revalidate")) {
                     maxAge = 0;
                 }
@@ -115,8 +112,8 @@ public class HttpHeaderParser {
     }
 
     /**
-     * Returns the charset specified in the Content-Type of this header,
-     * or the HTTP default (ISO-8859-1) if none can be found.
+     * Returns the charset specified in the Content-Type of this header, or the HTTP default
+     * (ISO-8859-1) if none can be found.
      */
     public static String parseCharset(Map<String, String> headers) {
         String contentType = headers.get(HTTP.CONTENT_TYPE);

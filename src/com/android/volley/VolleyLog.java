@@ -1,17 +1,15 @@
 /*
  * Copyright (C) 2011 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
 
 package com.android.volley;
@@ -30,11 +28,9 @@ public class VolleyLog {
     public static boolean DEBUG = Log.isLoggable(TAG, Log.VERBOSE);
 
     /**
-     * Customize the log tag for your application, so that other apps
-     * using Volley don't mix their logs with yours.
-     * <br />
-     * Enable the log property for your tag before starting your app:
-     * <br />
+     * Customize the log tag for your application, so that other apps using Volley don't mix their
+     * logs with yours. <br />
+     * Enable the log property for your tag before starting your app: <br />
      * {@code adb shell setprop log.tag.&lt;tag&gt;}
      */
     public static void setTag(String tag) {
@@ -72,8 +68,8 @@ public class VolleyLog {
     }
 
     /**
-     * Formats the caller's provided message and prepends useful info like
-     * calling thread ID and method name.
+     * Formats the caller's provided message and prepends useful info like calling thread ID and
+     * method name.
      */
     private static String buildMessage(String format, Object... args) {
         String msg = (args == null) ? format : String.format(Locale.US, format, args);
@@ -93,8 +89,7 @@ public class VolleyLog {
                 break;
             }
         }
-        return String.format(Locale.US, "[%d] %s: %s",
-                Thread.currentThread().getId(), caller, msg);
+        return String.format(Locale.US, "[%d] %s: %s", Thread.currentThread().getId(), caller, msg);
     }
 
     /**
@@ -131,8 +126,9 @@ public class VolleyLog {
         }
 
         /**
-         * Closes the log, dumping it to logcat if the time difference between
-         * the first and last markers is greater than {@link #MIN_DURATION_FOR_LOGGING_MS}.
+         * Closes the log, dumping it to logcat if the time difference between the first and last
+         * markers is greater than {@link #MIN_DURATION_FOR_LOGGING_MS}.
+         * 
          * @param header Header string to print above the marker log.
          */
         public synchronized void finish(String header) {

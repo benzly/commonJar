@@ -1,17 +1,15 @@
 /*
  * Copyright (C) 2011 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
 
 package com.android.volley;
@@ -50,6 +48,7 @@ public class DefaultRetryPolicy implements RetryPolicy {
 
     /**
      * Constructs a new retry policy.
+     * 
      * @param initialTimeoutMs The initial timeout for the policy.
      * @param maxNumRetries The maximum number of retries.
      * @param backoffMultiplier Backoff multiplier for the policy.
@@ -78,6 +77,7 @@ public class DefaultRetryPolicy implements RetryPolicy {
 
     /**
      * Prepares for the next retry by applying a backoff to the timeout.
+     * 
      * @param error The error code of the last attempt.
      */
     @Override

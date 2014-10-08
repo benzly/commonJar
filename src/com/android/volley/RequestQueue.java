@@ -1,17 +1,15 @@
 /*
  * Copyright (C) 2011 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
 
 package com.android.volley;
@@ -31,9 +29,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * A request dispatch queue with a thread pool of dispatchers.
  *
- * Calling {@link #add(Request)} will enqueue the given Request for dispatch,
- * resolving from either cache or network on a worker thread, and then delivering
- * a parsed response on the main thread.
+ * Calling {@link #add(Request)} will enqueue the given Request for dispatch, resolving from either
+ * cache or network on a worker thread, and then delivering a parsed response on the main thread.
  */
 public class RequestQueue {
 
@@ -44,29 +41,25 @@ public class RequestQueue {
      * Staging area for requests that already have a duplicate request in flight.
      *
      * <ul>
-     *     <li>containsKey(cacheKey) indicates that there is a request in flight for the given cache
-     *          key.</li>
-     *     <li>get(cacheKey) returns waiting requests for the given cache key. The in flight request
-     *          is <em>not</em> contained in that list. Is null if no requests are staged.</li>
+     * <li>containsKey(cacheKey) indicates that there is a request in flight for the given cache
+     * key.</li>
+     * <li>get(cacheKey) returns waiting requests for the given cache key. The in flight request is
+     * <em>not</em> contained in that list. Is null if no requests are staged.</li>
      * </ul>
      */
-    private final Map<String, Queue<Request<?>>> mWaitingRequests =
-            new HashMap<String, Queue<Request<?>>>();
+    private final Map<String, Queue<Request<?>>> mWaitingRequests = new HashMap<String, Queue<Request<?>>>();
 
     /**
-     * The set of all requests currently being processed by this RequestQueue. A Request
-     * will be in this set if it is waiting in any queue or currently being processed by
-     * any dispatcher.
+     * The set of all requests currently being processed by this RequestQueue. A Request will be in
+     * this set if it is waiting in any queue or currently being processed by any dispatcher.
      */
     private final Set<Request<?>> mCurrentRequests = new HashSet<Request<?>>();
 
     /** The cache triage queue. */
-    private final PriorityBlockingQueue<Request<?>> mCacheQueue =
-        new PriorityBlockingQueue<Request<?>>();
+    private final PriorityBlockingQueue<Request<?>> mCacheQueue = new PriorityBlockingQueue<Request<?>>();
 
     /** The queue of requests that are actually going out to the network. */
-    private final PriorityBlockingQueue<Request<?>> mNetworkQueue =
-        new PriorityBlockingQueue<Request<?>>();
+    private final PriorityBlockingQueue<Request<?>> mNetworkQueue = new PriorityBlockingQueue<Request<?>>();
 
     /** Number of network request dispatcher threads to start. */
     private static final int DEFAULT_NETWORK_THREAD_POOL_SIZE = 4;
@@ -94,8 +87,7 @@ public class RequestQueue {
      * @param threadPoolSize Number of network dispatcher threads to create
      * @param delivery A ResponseDelivery interface for posting responses and errors
      */
-    public RequestQueue(Cache cache, Network network, int threadPoolSize,
-            ResponseDelivery delivery) {
+    public RequestQueue(Cache cache, Network network, int threadPoolSize, ResponseDelivery delivery) {
         mCache = cache;
         mNetwork = network;
         mDispatchers = new NetworkDispatcher[threadPoolSize];
@@ -110,8 +102,7 @@ public class RequestQueue {
      * @param threadPoolSize Number of network dispatcher threads to create
      */
     public RequestQueue(Cache cache, Network network, int threadPoolSize) {
-        this(cache, network, threadPoolSize,
-                new ExecutorDelivery(new Handler(Looper.getMainLooper())));
+        this(cache, network, threadPoolSize, new ExecutorDelivery(new Handler(Looper.getMainLooper())));
     }
 
     /**
@@ -128,15 +119,14 @@ public class RequestQueue {
      * Starts the dispatchers in this queue.
      */
     public void start() {
-        stop();  // Make sure any currently running dispatchers are stopped.
+        stop(); // Make sure any currently running dispatchers are stopped.
         // Create the cache dispatcher and start it.
         mCacheDispatcher = new CacheDispatcher(mCacheQueue, mNetworkQueue, mCache, mDelivery);
         mCacheDispatcher.start();
 
         // Create network dispatchers (and corresponding threads) up to the pool size.
         for (int i = 0; i < mDispatchers.length; i++) {
-            NetworkDispatcher networkDispatcher = new NetworkDispatcher(mNetworkQueue, mNetwork,
-                    mCache, mDelivery);
+            NetworkDispatcher networkDispatcher = new NetworkDispatcher(mNetworkQueue, mNetwork, mCache, mDelivery);
             mDispatchers[i] = networkDispatcher;
             networkDispatcher.start();
         }
@@ -180,6 +170,7 @@ public class RequestQueue {
 
     /**
      * Cancels all requests in this queue for which the given filter applies.
+     * 
      * @param filter The filtering function to use
      */
     public void cancelAll(RequestFilter filter) {
@@ -193,8 +184,8 @@ public class RequestQueue {
     }
 
     /**
-     * Cancels all requests in this queue with the given tag. Tag must be non-null
-     * and equality is by identity.
+     * Cancels all requests in this queue with the given tag. Tag must be non-null and equality is
+     * by identity.
      */
     public void cancelAll(final Object tag) {
         if (tag == null) {
@@ -210,6 +201,7 @@ public class RequestQueue {
 
     /**
      * Adds a Request to the dispatch queue.
+     * 
      * @param request The request to service
      * @return The passed-in request
      */
@@ -258,8 +250,10 @@ public class RequestQueue {
      * Called from {@link Request#finish(String)}, indicating that processing of the given request
      * has finished.
      *
-     * <p>Releases waiting requests for <code>request.getCacheKey()</code> if
-     *      <code>request.shouldCache()</code>.</p>
+     * <p>
+     * Releases waiting requests for <code>request.getCacheKey()</code> if
+     * <code>request.shouldCache()</code>.
+     * </p>
      */
     void finish(Request<?> request) {
         // Remove from the set of requests currently being processed.
@@ -273,8 +267,7 @@ public class RequestQueue {
                 Queue<Request<?>> waitingRequests = mWaitingRequests.remove(cacheKey);
                 if (waitingRequests != null) {
                     if (VolleyLog.DEBUG) {
-                        VolleyLog.v("Releasing %d waiting requests for cacheKey=%s.",
-                                waitingRequests.size(), cacheKey);
+                        VolleyLog.v("Releasing %d waiting requests for cacheKey=%s.", waitingRequests.size(), cacheKey);
                     }
                     // Process all queued up requests. They won't be considered as in flight, but
                     // that's not a problem as the cache has been primed by 'request'.

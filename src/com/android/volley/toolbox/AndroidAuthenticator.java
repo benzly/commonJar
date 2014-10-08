@@ -1,17 +1,15 @@
 /*
  * Copyright (C) 2011 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
 
 package com.android.volley.toolbox;
@@ -26,8 +24,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 /**
- * An Authenticator that uses {@link AccountManager} to get auth
- * tokens of a specified type for a specified account.
+ * An Authenticator that uses {@link AccountManager} to get auth tokens of a specified type for a
+ * specified account.
  */
 public class AndroidAuthenticator implements Authenticator {
     private final Context mContext;
@@ -37,6 +35,7 @@ public class AndroidAuthenticator implements Authenticator {
 
     /**
      * Creates a new authenticator.
+     * 
      * @param context Context for accessing AccountManager
      * @param account Account to authenticate as
      * @param authTokenType Auth token type passed to AccountManager
@@ -47,13 +46,13 @@ public class AndroidAuthenticator implements Authenticator {
 
     /**
      * Creates a new authenticator.
+     * 
      * @param context Context for accessing AccountManager
      * @param account Account to authenticate as
      * @param authTokenType Auth token type passed to AccountManager
      * @param notifyAuthFailure Whether to raise a notification upon auth failure
      */
-    public AndroidAuthenticator(Context context, Account account, String authTokenType,
-            boolean notifyAuthFailure) {
+    public AndroidAuthenticator(Context context, Account account, String authTokenType, boolean notifyAuthFailure) {
         mContext = context;
         mAccount = account;
         mAuthTokenType = authTokenType;
@@ -72,8 +71,7 @@ public class AndroidAuthenticator implements Authenticator {
     @Override
     public String getAuthToken() throws AuthFailureError {
         final AccountManager accountManager = AccountManager.get(mContext);
-        AccountManagerFuture<Bundle> future = accountManager.getAuthToken(mAccount,
-                mAuthTokenType, mNotifyAuthFailure, null, null);
+        AccountManagerFuture<Bundle> future = accountManager.getAuthToken(mAccount, mAuthTokenType, mNotifyAuthFailure, null, null);
         Bundle result;
         try {
             result = future.getResult();

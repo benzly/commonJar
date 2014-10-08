@@ -1,17 +1,15 @@
 /*
  * Copyright (C) 2011 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
 
 package com.android.volley;
@@ -29,6 +27,7 @@ public class ExecutorDelivery implements ResponseDelivery {
 
     /**
      * Creates a new response delivery interface.
+     * 
      * @param handler {@link Handler} to post responses on
      */
     public ExecutorDelivery(final Handler handler) {
@@ -42,8 +41,8 @@ public class ExecutorDelivery implements ResponseDelivery {
     }
 
     /**
-     * Creates a new response delivery interface, mockable version
-     * for testing.
+     * Creates a new response delivery interface, mockable version for testing.
+     * 
      * @param executor For running delivery tasks
      */
     public ExecutorDelivery(Executor executor) {
@@ -70,8 +69,7 @@ public class ExecutorDelivery implements ResponseDelivery {
     }
 
     /**
-     * A Runnable used for delivering network responses to a listener on the
-     * main thread.
+     * A Runnable used for delivering network responses to a listener on the main thread.
      */
     @SuppressWarnings("rawtypes")
     private class ResponseDeliveryRunnable implements Runnable {
@@ -113,6 +111,6 @@ public class ExecutorDelivery implements ResponseDelivery {
             if (mRunnable != null) {
                 mRunnable.run();
             }
-       }
+        }
     }
 }
