@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TextViewWithTTF">
+        <attr name="ttf" format="string" />
+        <attr name="ttf_focus" format="string" />
+    </declare-styleable>
+
+</resources>
