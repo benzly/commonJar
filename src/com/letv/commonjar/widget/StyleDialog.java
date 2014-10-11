@@ -1,24 +1,3 @@
-/**
- * =====================================================================
- *
- * @file JStyleDialog.java
- * @Module Name com.joysee.common.widget
- * @author benz
- * @OS version 1.0
- * @Product type: JoySee
- * @date 2014-1-16
- * @brief This file is the http **** implementation.
- * @This file is responsible by ANDROID TEAM.
- * @Comments: ===================================================================== Revision
- *            History:
- *
- *            Modification Tracking
- *
- *            Author Date OS version Reason ---------- ------------ ------------- ----------- benz
- *            2014-1-16 1.0 Check for NULL, 0 h/w
- *            =====================================================================
- **/
-
 package com.letv.commonjar.widget;
 
 import android.app.Dialog;
@@ -41,6 +20,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
+import com.benz.fastblur.Fast2Blur;
 import com.letv.commonjar.CLog;
 
 import miui.util.ImageUtils;
@@ -216,6 +196,7 @@ public class StyleDialog extends Dialog {
                 localBitmap3 = Bitmap.createBitmap(localBitmap2.getWidth(), localBitmap2.getHeight(), Bitmap.Config.ARGB_8888);
                 localBitmap3.eraseColor(Color.argb(224, 0, 0, 0));
                 ImageUtils.getInstance().createFastBlur(localBitmap2, localBitmap3, mBlurLevel);
+//                Fast2Blur.build(localBitmap3, mBlurLevel);
             } else {
                 localBitmap3 = mPrepareBlurBitmap;
             }

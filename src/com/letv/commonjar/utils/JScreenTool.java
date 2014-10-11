@@ -11,7 +11,7 @@ import android.view.Display;
 import android.view.Surface;
 import android.view.WindowManager;
 
-public class ScreenTool {
+public class JScreenTool {
 
     public static DisplayMetrics getDisplayMetrics(Activity ctx) {
         DisplayMetrics metric = new DisplayMetrics();
