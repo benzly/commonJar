@@ -81,9 +81,9 @@ public class JScreenTool {
             dims[1] = Math.abs(dims[1]);
         }
 
-        Bitmap mScreenBitmap = Surface.screenshot((int) dims[0], (int) dims[1]);
+        Bitmap mScreenBitmap = null;// Surface.screenshot((int) dims[0], (int) dims[1]);
 
-        if (requiresRotation) {
+        if (requiresRotation && mScreenBitmap != null) {
             // Rotate the screenshot to the current orientation
             Bitmap ss = Bitmap.createBitmap(mDisplayMetrics.widthPixels, mDisplayMetrics.heightPixels, Bitmap.Config.ARGB_8888);
             Canvas c = new Canvas(ss);
